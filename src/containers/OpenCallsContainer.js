@@ -1,16 +1,16 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-import OpenCallsList from '../components/OpenCallsList'
-import OpenCallShow from './OpenCallShow'
+import { Link } from 'react-router-dom';
 
 const OpenCallsContainer = ({ match, calls }) =>  {
-  let openCallRoute
-  if (calls.length > 0){
-    openCallRoute = <Route path={`${match.url}/:callsId`} render={routerProps => <OpenCallShow {...routerProps} calls={calls} />} />
-  }
-  return(<div>
-    <OpenCallsList calls={calls} />
-    {openCallRoute}
+
+  let renderCalls
+  renderCalls = Object.keys(calls).map(callId =>
+    <div key={callId}><Link to={`/calls/${callId}`}>{calls[callId].attributes.name}</Link></div>
+  )
+  return(
+  <div>
+    <h1>Open Call</h1>
+    {renderCalls}
   </div>
   )
   }
