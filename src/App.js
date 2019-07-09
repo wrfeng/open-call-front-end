@@ -1,22 +1,49 @@
-import React, { PureComponent } from 'react'
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NavBar from './NavBar';
+import Home from './Home'
+import NavBar from './NavBar'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Signout from './components/Signout'
 
-export class App extends PureComponent {
-render() {
-    return (
-      <Router>  
-        <React.Fragment>
-      <NavBar />
-      {/* <Route exact path="/" render={Calls} />
-      <Route path="/calls" render={Calls} />
-      <Route path="/orgs" render={Orgs} />  */}
-        </React.Fragment>
-       
-      </Router>
-    )
+import { BrowserRouter, Switch, Route, } from 'react-router-dom'
+
+class App extends React.Component {
+  state = {
+    artist: {},
+    page: 'home'
   }
 
+  redirect = (page) => {
+    this.setState({ page: page })
+  }
+
+  componentDidMount() {
+    if (localStorage.token) {
+      fetch('http://localhost:3000/profile', {
+        headers: {
+          Authorization: localStorage.token
+        }
+      })
+      .then(res => res.json())
+      .then(profileInfo => this.setState({ artist: profileInfo }))
+    }
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+      <NavBar />
+    <Switch>
+    <Route exact path="/" render={(routerProps) => <Home {...routerProps} artist={this.state.artist}/>} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route path="/signout" component={Signout} />
+         </Switch>
+    </BrowserRouter>
+  )
+
+  }
 }
+
 export default App;
