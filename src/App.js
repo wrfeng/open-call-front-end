@@ -6,12 +6,12 @@ import NavBar from './NavBar'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Signout from './components/Signout'
-import Profile from './components/Profile'
+import Profile from './containers/Profile'
 
 export default class App extends React.Component{
   state = {
     calls: [],
-    artistName: {}
+    artistName: '',
   }
 
   componentDidMount(){
@@ -40,11 +40,6 @@ export default class App extends React.Component{
     this.setState({ artistName: event })
   }
 
-  getArtist = event => {
-    console.log('getting artist state from Login or Signup', event );
-    this.setState({ artistName: event })
-  }
-
   clearArtist = () => {
     console.log('artist gone');
     this.setState({ artistName: '' })
@@ -59,7 +54,7 @@ export default class App extends React.Component{
         <Route path="/signup" render={routerProps => <Signup {...routerProps} getArtist={this.getArtist} />} />
         <Route path="/signout" render={routerProps => <Signout {...routerProps} clearArtist={this.clearArtist} />} />
 
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile" render={routerProps => <Profile {...routerProps} artist={this.state.artistName} />} />
           <div>
             <Route exact path='/' render={routerProps => <OpenCallsContainer {...routerProps} calls={this.state.calls}/>} />
             {this.state.calls.length === 0 ? null : <Route path={`/calls/:callsId`} render={routerProps => <OpenCallShow {...routerProps} calls={this.state.calls} />} />}
