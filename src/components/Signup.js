@@ -19,7 +19,8 @@ import React from 'react';
       .then(res => res.json())
       .then(parsedResponse => {
         localStorage.setItem('token', parsedResponse.token)
-        this.props.redirect('home')
+        this.props.history.push('/')
+        if (localStorage.token !== 'undefined') {this.props.getArtist(this.state.name)} else {console.log('no token, wrong, bad')}    
       })
   }
 
@@ -32,6 +33,7 @@ import React from 'react';
     // console.log(this.state)
     return (
       <form onSubmit={this.handleSubmit}>
+        <h1>Sign Up</h1>
         <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
         <input type="text" value={this.state.password} onChange={this.handleChange} name="password" />
         <input type="submit" value="Sign Up!" />

@@ -20,6 +20,11 @@ import React from 'react';
       .then(parsedResponse => {
         localStorage.setItem('token', parsedResponse.token)
         this.props.history.push('/')
+        // console.log(parsedResponse);
+        // console.log('login state', this.state.name);
+        // console.log(this.props);
+        // 
+        if (localStorage.token !== 'undefined') {this.props.getArtist(this.state.name)} else {console.log('no token, wrong, bad')}
       })
   }
 

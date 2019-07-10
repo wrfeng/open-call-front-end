@@ -4,7 +4,9 @@ export class Signout extends Component {
 
     componentDidMount() {
         localStorage.clear();
+        this.props.clearArtist()
         this.props.history.push('/')
+        
 
 
     }
