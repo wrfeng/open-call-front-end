@@ -18,13 +18,14 @@ import React from 'react';
     })
       .then(res => res.json())
       .then(parsedResponse => {
-        localStorage.setItem('token', parsedResponse.token)
-        this.props.history.push('/')
-        // console.log(parsedResponse);
-        // console.log('login state', this.state.name);
-        // console.log(this.props);
-        // 
-        if (localStorage.token !== 'undefined') {this.props.getArtist(this.state.name)} else {console.log('no token, wrong, bad')}
+        if (parsedResponse.token) {
+          localStorage.setItem('token', parsedResponse.token)
+          this.props.history.push('/')
+          this.props.getArtist(this.state.name)
+        } else {
+          //handle error, ex. show user something like, alert()
+          console.log("YO! didn't work, try agian");
+        }
       })
   }
 
