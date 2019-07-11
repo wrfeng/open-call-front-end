@@ -19,6 +19,7 @@ componentDidMount() {
     .then(response => response.json())
     .then(artists=> {
         let loggedArtist = artists.data.find(artist => artist.attributes.name === this.props.artist)    
+        console.log('loggedArtist: ', loggedArtist);
     this.setState({
             currentArtist: loggedArtist,
             singleArtWork: {
@@ -66,7 +67,7 @@ fetch('http://localhost:3000/artworks', {
                 <label>title</label>
                 <input type="text" onChange={this.handleChange} name="title" /><br />
                 <label>Year</label>
-                <input type="number" onChange={this.handleChange} name="year" /><br />
+                <input type="date" onChange={this.handleChange} name="year" /><br />
                 <label>Image URL</label>
                 <input type="text" onChange={this.handleChange} name="image" /><br />
                 <label>description</label>
@@ -75,7 +76,7 @@ fetch('http://localhost:3000/artworks', {
                 <input type="text" onChange={this.handleChange} name="medium" /><br />
                 <input type="submit" value="Add Artwork" />
                 </form>
-                <ArtWorkContainer artWorks={this.props.artWorks} currentArtist={this.state.currentArtist} />
+                {this.state.currentArtist.attributes ? <ArtWorkContainer artWorks={this.props.artWorks} currentArtist={this.state.currentArtist} /> : null}
             </div>
         )
     }

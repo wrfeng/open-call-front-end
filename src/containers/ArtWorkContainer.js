@@ -5,15 +5,22 @@ class ArtWorkContainer extends React.Component {
 
     render() {
        
-        // debugger
-        //  = this.props.artWorks.filter(art => art.artist_id === this.props.currentArtist.id)
+      
+      
         
-        let artistArtWork = this.props.artWorks.filter(art => art.artist_id === this.props.currentArtist.id).map(art => {
-        return <Art key={art.id} art={art} />
-      })
+        // this.props.artWorks.filter(art => art.attributes.artist_id === 1)
+        
+    //     .map(art => {
+    //     return <Art key={art.id} art={art} />
+    //   })
+        let artistArtWork = this.props.currentArtist.attributes.artworks.map(art => {
+                return <Art key={art.id} art={art} />
+              })
+      
+   
       
 
-    console.log(this.props.artWorks);
+    // console.log(this.props.artWorks);
 
         return (
             <div>

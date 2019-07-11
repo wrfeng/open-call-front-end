@@ -28,7 +28,7 @@ class OpenCallShow extends React.Component{
           <li>{this.props.calls[this.props.match.params.callsId].attributes.medium}</li>
           <li>{this.props.calls[this.props.match.params.callsId].attributes.deadline }</li>
         </ul>
-        {this.state.apply ? <CallApplicationForm callId={this.props.match.params.callsId} handleCancel={this.handleCancel}/> : null}
+        {this.state.apply ? <CallApplicationForm currentArtist={this.props.currentArtist} callId={this.props.match.params.callsId} handleCancel={this.handleCancel}/> : null}
         {this.state.apply ? null  : <button onClick={this.handleApply}>Apply</button>}
         {this.state.apply ? null : <button>Organization Info</button>}
 
