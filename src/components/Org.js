@@ -11,14 +11,14 @@ export class Org extends Component {
 
         return (
             <div className="card">
-              <p>{this.props.org.attributes.name}</p>
+              <h3>{this.props.org.attributes.name}</h3>
               <p>{this.props.org.attributes.mission}</p>
               <p>{this.props.org.attributes.url}</p>
-              Location
-              <p>{this.props.org.attributes.street}</p>
-              <p>{this.props.org.attributes.city}</p>
-              <p>{this.props.org.attributes.zip}</p>
-              <p>{this.props.org.attributes.country}</p>
+              Location:
+              <p>{this.props.org.attributes.street}<br />
+                 {this.props.org.attributes.city}<br />
+                 {this.props.org.attributes.zip}<br />
+                 {this.props.org.attributes.country}</p>
               <h2>Current Calls</h2>
                 {orgCall}
             </div>

@@ -2,7 +2,8 @@ import React from 'react'
 import ArtWorkContainer from './ArtWorkContainer'
 
 class Profile extends React.Component {
-state = {   
+state = { 
+    artistWorks: [],  
     currentArtist: {},
     singleArtWork: {
         artist_id: '',
@@ -21,6 +22,7 @@ componentDidMount() {
         let loggedArtist = artists.data.find(artist => artist.attributes.name === this.props.artist)    
         console.log('loggedArtist: ', loggedArtist);
     this.setState({
+            artistWorks: loggedArtist.attributes.artworks,  
             currentArtist: loggedArtist,
             singleArtWork: {
                 ...this.state.singleArtWork,
@@ -28,6 +30,8 @@ componentDidMount() {
             }
         })
     })
+
+    
 
 }
 
@@ -53,21 +57,23 @@ fetch('http://localhost:3000/artworks', {
     body: JSON.stringify(this.state.singleArtWork)
 })
     .then(res => res.json())
-    .then(resp => 
+    .then(resp => {
+        this.setState({ artistWorks: [resp, ...this.state.artistWorks]})
         console.log("Newart", resp)
-    )
+    })
 }
 
     render() {
        
         return (
             <div>
-                <h1>This is profile page for {this.props.artist}</h1>
+                <h1>Profile page for {this.props.artist}</h1>
+                <h3>Add an artwork:</h3>
                 <form onSubmit={this.handleSubmit}>
                 <label>title</label>
                 <input type="text" onChange={this.handleChange} name="title" /><br />
                 <label>Year</label>
-                <input type="date" onChange={this.handleChange} name="year" /><br />
+                <input type="number" min="1400" max="2099" step="1"  onChange={this.handleChange} name="year" /><br />
                 <label>Image URL</label>
                 <input type="text" onChange={this.handleChange} name="image" /><br />
                 <label>description</label>
@@ -76,7 +82,7 @@ fetch('http://localhost:3000/artworks', {
                 <input type="text" onChange={this.handleChange} name="medium" /><br />
                 <input type="submit" value="Add Artwork" />
                 </form>
-                {this.state.currentArtist.attributes ? <ArtWorkContainer artWorks={this.props.artWorks} currentArtist={this.state.currentArtist} /> : null}
+                {this.state.currentArtist.attributes ? <ArtWorkContainer artWorks={this.state.artistWorks} currentArtist={this.state.currentArtist} /> : null}
             </div>
         )
     }

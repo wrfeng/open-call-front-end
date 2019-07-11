@@ -17,7 +17,7 @@ const OpenCallsContainer = ({ match, calls, currentArtist }) =>  {
   )
   return(
   <div>
-    <h1>Open Call</h1>
+    <h1>Open Calls - Application Systems</h1>
     {renderCalls}
   </div>
   )

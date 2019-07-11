@@ -40,7 +40,7 @@ import React from 'react';
       I am login page
       <form onSubmit={this.handleSubmit}>
         <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
-        <input type="text" value={this.state.password} onChange={this.handleChange} name="password" />
+        <input type="password" value={this.state.password} onChange={this.handleChange} name="password" />
         <input type="submit" value="Log in!" />
       </form>
       </div>

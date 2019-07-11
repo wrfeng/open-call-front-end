@@ -24,15 +24,35 @@ code {
 }
 
 .card img{
-  width:50%;
+  width:300px;
   display: flexbox;
 
 }
 .navbar {
-  border: 1px solid;
+  
 }
 
 .navbar a {
   display: inline;
+  margin: 1em;  
+}
+
+.submit-button {
+  display: grid;
+  justify-items: end;  
+}
+
+button {
   border: 1px solid;
+  font-size:2em;
+}
+
+.notclicked{
+  border: 0px solid black;
+
+}
+
+.clicked{
+  border: 4px solid green;
+
 }

@@ -13,7 +13,7 @@ class ArtWorkContainer extends React.Component {
     //     .map(art => {
     //     return <Art key={art.id} art={art} />
     //   })
-        let artistArtWork = this.props.currentArtist.attributes.artworks.map(art => {
+        let artistArtWork = this.props.artWorks.map(art => {
                 return <Art key={art.id} art={art} />
               })
       
@@ -24,7 +24,7 @@ class ArtWorkContainer extends React.Component {
 
         return (
             <div>
-               <h1>This hold all the art</h1> 
+               <h1>Check out all your art works: </h1> 
                {artistArtWork}
             </div>
         )

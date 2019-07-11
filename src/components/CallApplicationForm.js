@@ -5,37 +5,33 @@ class CallApplicationForm extends React.Component{
   state = {
     portfolio: [],
     artist_id: '',
-    call_id: this.props.callId
+    call_id: parseInt(this.props.callId)+1
   }
 
   addToPortfolio = (image) => {
     if (!this.state.portfolio.includes(image))
     {this.setState({
       portfolio: [...this.state.portfolio, image],
-      artist_id: this.props.currentArtist.id
-  
-    })}
- 
+      artist_id: this.props.currentArtist.id  
+    })} 
   }
 
-  
 
-  apply = (click) => {
-    
-    if (this.state.portfolio > 0){
-      console.log('click: ', click.target);
-//       fetch('http://localhost:3000/submits', {
-//     method: 'POST',
-//     headers: {
-//     'Content-Type': 'application/json',
-//     Accept: 'application/json'
-//     },
-//     body: JSON.stringify(this.state)
-// })
-//     .then(res => res.json())
-//     .then(resp => 
-//         console.log("Submit", resp)
-//     )
+  apply = (click) => {    
+    if (this.state.portfolio.length > 0){
+      // console.log('click: ', click.target);
+   fetch('http://localhost:3000/submits', {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+    },
+    body: JSON.stringify(this.state)
+})
+    .then(res => res.json())
+    .then(resp => 
+        console.log("Submit", resp)
+    )
  }
   }
  
@@ -55,11 +51,11 @@ class CallApplicationForm extends React.Component{
 
   
 
-  console.log('artistArtWork: ', artistArtWork);
+  // console.log('artistArtWork: ', artistArtWork);
     return(
-      <div>
-        Porfolio Component Goes Here
-        <button onClick={this.apply}>🖼</button>
+        <div>
+        <div className="submit-button"><button onClick={this.apply}>Submit Your Work 🖼</button></div>
+        <h3>Select work from your Portfolio:</h3>
         {artistArtWork}
         {/* <form>
           <input placeholder="image url" ></input><br></br>
