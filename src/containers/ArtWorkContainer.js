@@ -1,24 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Art  from '../components/Art'
 
-class ArtWorkContainer extends Component {
-
-   
-        componentDidMount() {  
-            fetch('http://localhost:3000/artworks')
-            .then(response => response.json())
-            .then(artworks => {
-              
-                let loggedartwork = artworks.data.map(artwork => artwork.attributes.artist.id === this.props.currentArtist.id)
-                debugger    
-                console.log('loggedartwork: ', loggedartwork);
-            })
-
-    }
+class ArtWorkContainer extends React.Component {
+    
 
     render() {
+       
+        
+        let artistArtWork = this.props.artWorks.map(art => {
+        return <Art key={art.id} art={art}  />
+      })
+      console.log(artistArtWork);
+
         return (
             <div>
                <h1>This hold all the art</h1> 
+               {artistArtWork}
             </div>
         )
     }

@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ArtWorkContainer from './ArtWorkContainer'
 
-class Profile extends Component {
+class Profile extends React.Component {
 state = {
     
     currentArtist: {},
@@ -76,7 +76,7 @@ fetch('http://localhost:3000/artworks', {
                 <input type="text" onChange={this.handleChange} name="medium" /><br />
                 <input type="submit" value="Add Artwork" />
                 </form>
-                <ArtWorkContainer currentArtist={this.state.currentArtist} />
+                <ArtWorkContainer artWorks={this.props.artWorks} currentArtist={this.state.currentArtist} />
             </div>
         )
     }

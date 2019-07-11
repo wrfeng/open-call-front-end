@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.art-card {
+  display: flexbox;
+  width: 25%;
+  padding: 1em;
+  border: 2px solid;
+}
+
+.art-card img{
+  width:100%;
+  display: flexbox;
+
+}
+

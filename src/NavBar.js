@@ -5,6 +5,8 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <NavLink to="/">Home</NavLink>
+      <NavLink to="/orgs">Orgs</NavLink>
+      
     {localStorage.token ? (<div><NavLink to="/signout">Signout</NavLink>
    <NavLink to="/profile">Profile</NavLink></div>) : (<div><NavLink to="/login">Login</NavLink>
    <NavLink to="/signup">Signup</NavLink></div>)}
