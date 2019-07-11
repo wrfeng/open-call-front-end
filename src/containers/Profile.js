@@ -2,8 +2,7 @@ import React from 'react'
 import ArtWorkContainer from './ArtWorkContainer'
 
 class Profile extends React.Component {
-state = {
-    
+state = {   
     currentArtist: {},
     singleArtWork: {
         artist_id: '',

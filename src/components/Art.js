@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class Art extends Component {
     render() {
         return (
-            <div className="art-card">
+            <div className="card">
                <h3>{this.props.art.attributes.title}</h3>
                <span>{this.props.art.attributes.year} - {this.props.art.attributes.medium}</span>
                <img src={this.props.art.attributes.image} />

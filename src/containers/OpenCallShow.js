@@ -20,7 +20,7 @@ class OpenCallShow extends React.Component{
   }
   render(){
     return (
-      <div>
+      <div className="card">
         {console.log(this.props.match, this.props.calls)}
         <h1>{this.props.calls[this.props.match.params.callsId].attributes.name}</h1>
         <ul>

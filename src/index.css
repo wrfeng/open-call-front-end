@@ -12,16 +12,27 @@ code {
     monospace;
 }
 
-.art-card {
-  display: flexbox;
-  width: 25%;
-  padding: 1em;
+.card {
+  display: inline-grid;
+  margin: 1em;
+  padding: .5em;
   border: 2px solid;
 }
 
-.art-card img{
-  width:100%;
+.card-date {
+  border-top: 2px solid;
+}
+
+.card img{
+  width:50%;
   display: flexbox;
 
 }
+.navbar {
+  border: 1px solid;
+}
 
+.navbar a {
+  display: inline;
+  border: 1px solid;
+}
